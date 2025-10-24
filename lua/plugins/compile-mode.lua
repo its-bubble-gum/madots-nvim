@@ -6,7 +6,7 @@ return {
     { "m00qek/baleia.nvim", tag = "v1.3.0" },
   },
   keys = {
-    { "<C-\\><C-\\>", "<CMD>Compile<CR>", mode = "n", desc = "Compile mode" }
+    { "<C-\\><C-'>", "<CMD>Compile<CR>", mode = "n", desc = "Compile mode" }
   },
   config = function()
     vim.g.compile_mode = {

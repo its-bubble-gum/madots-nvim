@@ -1,5 +1,6 @@
 vim.lsp.enable('ccls')
 vim.lsp.enable('lua_ls')
+vim.lsp.enable('ts_ls')
 
 vim.diagnostic.config({
   virtual_text = true,
