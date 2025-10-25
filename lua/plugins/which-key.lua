@@ -20,13 +20,18 @@ return {
       })
 
       wk.add({
-        { "<leader>",  group = "leader" },
-        { "<leader>c", group = "comment" },
-        { "<leader>f", group = "find/search" },
-        { "<leader>g", group = "git" },
-        { "<leader>l", group = "lsp" },
-        { "g",         group = "goto" },
-        { "<C-w>",     group = "window" },
+        { "<leader>",    group = "leader" },
+        { "<leader>c",   group = "comment" },
+        { "<leader>cc",  desc = "Toggle line comment" },
+        { "<leader>cb",  desc = "Toggle block comment" },
+        { "<leader>cv",  group = "operator" },
+        { "<leader>cvc", desc = "Line comment with motion" },
+        { "<leader>cvb", desc = "Block comment with motion" },
+        { "<leader>f",   group = "find/search" },
+        { "<leader>g",   group = "git" },
+        { "<leader>l",   group = "lsp" },
+        { "g",           group = "goto" },
+        { "<C-w>",       group = "window" },
       })
     end
   }

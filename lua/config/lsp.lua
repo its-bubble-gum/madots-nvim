@@ -192,5 +192,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
         desc = "Rename"
       })
     end
+
+    if client:supports_method('textDocument/inlayHint') then
+      vim.keymap.set("n", "<leader>lH", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf }), { bufnr = args.buf })
+      end, {
+        noremap = true,
+        silent = true,
+        buffer = args.buf,
+        desc = "Toggle inlay hints"
+      })
+    end
   end,
 })
