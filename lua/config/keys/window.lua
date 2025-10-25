@@ -1,9 +1,6 @@
--- Window navigation keymaps
-
 local M = {}
 
 function M.setup()
-  -- Navigate between windows using Ctrl+hjkl
   vim.keymap.set("n", "<C-h>", "<CMD>wincmd h<CR>", {
     silent = true,
     noremap = true,
