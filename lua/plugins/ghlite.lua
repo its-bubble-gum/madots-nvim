@@ -1,10 +1,14 @@
 return {
 	"daliusd/ghlite.nvim",
-	dependencies = { "ibhagwan/fzf-lua" },
+	dependencies = {
+		"sindrets/diffview.nvim",
+		"ibhagwan/fzf-lua",
+	},
 	config = function()
-		local ghlite = require("ghlite")
+		-- Register FzfLua as UI select handler for ghlite
+		vim.cmd('FzfLua register_ui_select')
 
-		ghlite.setup({
+		require("ghlite").setup({
 			debug = false,
 			view_split = "vsplit",
 			diff_split = "vsplit",
@@ -14,127 +18,26 @@ return {
 
 		-- Key bindings following your <leader>g (git) pattern
 
-		-- PR operations
-		vim.keymap.set("n", "<leader>gpl", function()
-			ghlite.pr_list()
-		end, { desc = "List PRs" })
+		-- PR selection and checkout
+		vim.keymap.set("n", "<leader>gps", "<cmd>GHLitePRSelect<cr>", { desc = "Select PR" })
+		vim.keymap.set("n", "<leader>gpc", "<cmd>GHLitePRCheckout<cr>", { desc = "Checkout PR" })
+		vim.keymap.set("n", "<leader>gpv", "<cmd>GHLitePRView<cr>", { desc = "View PR" })
 
-		vim.keymap.set("n", "<leader>gpo", function()
-			ghlite.pr_open()
-		end, { desc = "Open PR" })
+		-- PR diff and review
+		vim.keymap.set("n", "<leader>gpd", "<cmd>GHLitePRDiff<cr>", { desc = "PR diff" })
+		vim.keymap.set("n", "<leader>gpdv", "<cmd>GHLitePRDiffview<cr>", { desc = "PR diffview" })
+		vim.keymap.set("n", "<leader>gpl", "<cmd>GHLitePRLoadComments<cr>", { desc = "Load PR comments" })
 
-		vim.keymap.set("n", "<leader>gpc", function()
-			ghlite.pr_checkout()
-		end, { desc = "Checkout PR" })
+		-- PR actions
+		vim.keymap.set("n", "<leader>gpa", "<cmd>GHLitePRApprove<cr>", { desc = "Approve PR" })
+		vim.keymap.set("n", "<leader>gpr", "<cmd>GHLitePRRequestChanges<cr>", { desc = "Request changes" })
+		vim.keymap.set("n", "<leader>gpm", "<cmd>GHLitePRMerge<cr>", { desc = "Merge PR" })
 
-		vim.keymap.set("n", "<leader>gpd", function()
-			ghlite.pr_diff()
-		end, { desc = "PR diff" })
-
-		vim.keymap.set("n", "<leader>gpm", function()
-			ghlite.pr_merge()
-		end, { desc = "Merge PR" })
-
-		vim.keymap.set("n", "<leader>gpa", function()
-			ghlite.pr_approve()
-		end, { desc = "Approve PR" })
-
-		-- Issues
-		vim.keymap.set("n", "<leader>gil", function()
-			ghlite.issue_list()
-		end, { desc = "List issues" })
-
-		vim.keymap.set("n", "<leader>gio", function()
-			ghlite.issue_open()
-		end, { desc = "Open issue" })
-
-		-- Comments
-		vim.keymap.set("n", "<leader>gcc", function()
-			ghlite.comment_create()
-		end, { desc = "Create comment" })
-
-		-- FzfLua integration for PRs
-		vim.keymap.set("n", "<leader>gfp", function()
-			local fzf = require("fzf-lua")
-			local prs = ghlite.get_prs_list()
-
-			if not prs or #prs == 0 then
-				vim.notify("No PRs found", vim.log.levels.INFO)
-				return
-			end
-
-			local entries = {}
-			for _, pr in ipairs(prs) do
-				table.insert(entries, string.format("#%d: %s (@%s) [%s]",
-					pr.number, pr.title, pr.user.login, pr.state))
-			end
-
-			fzf.fzf_exec(entries, {
-				prompt = "PRs❯ ",
-				actions = {
-					["default"] = function(selected)
-						local pr_num = selected[1]:match("#(%d+)")
-						if pr_num then
-							ghlite.pr_open(tonumber(pr_num))
-						end
-					end,
-					["ctrl-d"] = function(selected)
-						local pr_num = selected[1]:match("#(%d+)")
-						if pr_num then
-							ghlite.pr_diff(tonumber(pr_num))
-						end
-					end,
-					["ctrl-c"] = function(selected)
-						local pr_num = selected[1]:match("#(%d+)")
-						if pr_num then
-							ghlite.pr_checkout(tonumber(pr_num))
-						end
-					end,
-				},
-				winopts = {
-					height = 0.70,
-					width = 0.85,
-					preview = {
-						hidden = "hidden",
-					},
-				},
-			})
-		end, { desc = "FZF PR picker" })
-
-		-- FzfLua integration for Issues
-		vim.keymap.set("n", "<leader>gfi", function()
-			local fzf = require("fzf-lua")
-			local issues = ghlite.get_issues_list()
-
-			if not issues or #issues == 0 then
-				vim.notify("No issues found", vim.log.levels.INFO)
-				return
-			end
-
-			local entries = {}
-			for _, issue in ipairs(issues) do
-				table.insert(entries, string.format("#%d: %s (@%s) [%s]",
-					issue.number, issue.title, issue.user.login, issue.state))
-			end
-
-			fzf.fzf_exec(entries, {
-				prompt = "Issues❯ ",
-				actions = {
-					["default"] = function(selected)
-						local issue_num = selected[1]:match("#(%d+)")
-						if issue_num then
-							ghlite.issue_open(tonumber(issue_num))
-						end
-					end,
-				},
-				winopts = {
-					height = 0.70,
-					width = 0.85,
-					preview = {
-						hidden = "hidden",
-					},
-				},
-			})
-		end, { desc = "FZF issue picker" })
+		-- PR comments
+		vim.keymap.set("n", "<leader>gcp", "<cmd>GHLitePRAddPRComment<cr>", { desc = "Add PR comment" })
+		vim.keymap.set("n", "<leader>gca", "<cmd>GHLitePRAddComment<cr>", { desc = "Add inline comment" })
+		vim.keymap.set("n", "<leader>gcu", "<cmd>GHLitePRUpdateComment<cr>", { desc = "Update comment" })
+		vim.keymap.set("n", "<leader>gcd", "<cmd>GHLitePRDeleteComment<cr>", { desc = "Delete comment" })
+		vim.keymap.set("n", "<leader>gco", "<cmd>GHLitePROpenComment<cr>", { desc = "Open comment in browser" })
 	end,
 }
