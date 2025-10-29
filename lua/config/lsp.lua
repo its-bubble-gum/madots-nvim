@@ -5,7 +5,12 @@ vim.lsp.enable('eslint')
 vim.lsp.enable('vtsls')
 
 vim.lsp.config('vtsls', {
-  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' }
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
+  capabilities = {
+    textDocument = {
+      formatting = false
+    }
+  }
 })
 
 vim.diagnostic.config({
