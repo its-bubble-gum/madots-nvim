@@ -208,5 +208,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
         desc = "Toggle inlay hints"
       })
     end
+
+    -- Diagnostic list keymaps
+    vim.keymap.set("n", "<leader>lq", function()
+      vim.diagnostic.setqflist()
+    end, {
+      noremap = true,
+      silent = true,
+      buffer = args.buf,
+      desc = "Diagnostics quickfix list"
+    })
+
+    vim.keymap.set("n", "<leader>ll", function()
+      vim.diagnostic.setloclist()
+    end, {
+      noremap = true,
+      silent = true,
+      buffer = args.buf,
+      desc = "Diagnostics location list"
+    })
   end,
 })
