@@ -5,6 +5,12 @@ vim.lsp.enable('eslint')
 vim.lsp.enable('vtsls')
 vim.lsp.enable('omnisharp')
 
+vim.lsp.config('omnisharp', {
+  cmd = { 'OmniSharp' },
+  filetypes = { 'cs', 'vb' },
+  root_markers = { '*.sln', '*.csproj', 'omnisharp.json', 'function.json' },
+})
+
 vim.lsp.config('vtsls', {
   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
   capabilities = {
