@@ -3,6 +3,7 @@ vim.lsp.enable('lua_ls')
 vim.lsp.enable('angularls')
 vim.lsp.enable('eslint')
 vim.lsp.enable('vtsls')
+vim.lsp.enable('omnisharp')
 
 vim.lsp.config('vtsls', {
   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' },
