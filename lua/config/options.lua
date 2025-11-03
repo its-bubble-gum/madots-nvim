@@ -6,3 +6,11 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.foldmethod = "marker"
 vim.o.completeopt = 'menuone,preview,noselect'
+
+-- Override vim-sleuth's tabstop setting
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.tabstop = 2
+  end,
+})
