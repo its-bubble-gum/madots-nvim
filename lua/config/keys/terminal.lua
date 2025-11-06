@@ -31,8 +31,20 @@ function M.toggle_terminal()
       vim.cmd("terminal")
       local new_term_buf = vim.api.nvim_get_current_buf()
       vim.api.nvim_buf_set_var(new_term_buf, "pinned_terminal", true)
+
+      -- Pin the buffer using bufferline API directly
       vim.schedule(function()
-        vim.cmd("BufferLineTogglePin")
+        local ok_groups, groups = pcall(require, "bufferline.groups")
+        if ok_groups then
+          local buf_name = vim.api.nvim_buf_get_name(new_term_buf)
+          local element = { id = new_term_buf, path = buf_name }
+          if not groups._is_pinned(element) then
+            groups.add_element("pinned", element)
+          end
+        else
+          -- Fallback to command if API is not available
+          vim.cmd("BufferLineTogglePin")
+        end
       end)
       vim.cmd("startinsert")
     end

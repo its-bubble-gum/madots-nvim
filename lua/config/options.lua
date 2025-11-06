@@ -8,6 +8,9 @@ vim.opt.foldmethod = "marker"
 vim.opt.scrolloff = 10
 vim.o.completeopt = 'menuone,preview,noselect'
 
+-- Sync clipboard with system
+vim.opt.clipboard = "unnamedplus"
+
 -- Disable built-in completion
 vim.g.loaded_completion = 1
 

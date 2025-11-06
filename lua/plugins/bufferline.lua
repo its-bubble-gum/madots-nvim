@@ -7,6 +7,31 @@ return {
       options = {
         diagnostics = "nvim_lsp",
         show_close_icon = false,
+        custom_filter = function(buf)
+          local buftype = vim.bo[buf].buftype
+          local filetype = vim.bo[buf].filetype
+
+          -- Filter out quickfix, location lists, help, and other special buffers
+          if buftype == "quickfix" or buftype == "help" or buftype == "nofile" then
+            return false
+          end
+
+          -- Filter out specific filetypes (add more as needed)
+          local excluded_filetypes = {
+            "qf",
+            "help",
+            "fugitive",
+            "git",
+          }
+
+          for _, ft in ipairs(excluded_filetypes) do
+            if filetype == ft then
+              return false
+            end
+          end
+
+          return true
+        end,
         groups = {
           items = {
             require("bufferline.groups").builtin.pinned:with({ icon = "◉" })
