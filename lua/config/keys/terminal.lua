@@ -31,7 +31,9 @@ function M.toggle_terminal()
       vim.cmd("terminal")
       local new_term_buf = vim.api.nvim_get_current_buf()
       vim.api.nvim_buf_set_var(new_term_buf, "pinned_terminal", true)
-      vim.cmd("BufferLineTogglePin")
+      vim.schedule(function()
+        vim.cmd("BufferLineTogglePin")
+      end)
       vim.cmd("startinsert")
     end
   end
