@@ -7,13 +7,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-    -- Performance: Disable autotrigger for heavy LSPs (roslyn)
-    local autotrigger = client.name ~= 'roslyn'
-
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = autotrigger })
-    end
-
     if client:supports_method('textDocument/hover') then
       vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, {
         noremap = true,

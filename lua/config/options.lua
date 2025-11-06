@@ -8,6 +8,9 @@ vim.opt.foldmethod = "marker"
 vim.opt.scrolloff = 10
 vim.o.completeopt = 'menuone,preview,noselect'
 
+-- Disable built-in completion
+vim.g.loaded_completion = 1
+
 -- Override vim-sleuth's tabstop setting
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
