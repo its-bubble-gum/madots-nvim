@@ -30,6 +30,10 @@ return {
       desc = "Find buffers"
     })
 
+    vim.keymap.set("n", "<leader>ft", fzf.tabs, {
+      desc = "Find tabs"
+    })
+
     vim.keymap.set("n", "<leader>fr", fzf.oldfiles, {
       desc = "Recent files"
     })
