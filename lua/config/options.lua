@@ -6,6 +6,8 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.foldmethod = "marker"
 vim.opt.scrolloff = 10
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
 vim.o.completeopt = 'menuone,preview,noselect'
 
 -- Sync clipboard with system
