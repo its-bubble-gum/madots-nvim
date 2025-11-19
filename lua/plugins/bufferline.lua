@@ -42,68 +42,68 @@ return {
       vim.keymap.set("n", "H", "<CMD>BufferLineCyclePrev<CR>", {
         silent = true,
         noremap = true,
-        desc = "Previous buffer"
+        desc = "previous buffer"
       })
       vim.keymap.set("n", "L", "<CMD>BufferLineCycleNext<CR>", {
         silent = true,
         noremap = true,
-        desc = "Next buffer"
+        desc = "next buffer"
       })
 
       vim.keymap.set("n", "<M-h>", "<CMD>BufferLineMovePrev<CR>", {
         silent = true,
         noremap = true,
-        desc = "Move buffer left"
+        desc = "move buffer left"
       })
       vim.keymap.set("n", "<M-l>", "<CMD>BufferLineMoveNext<CR>", {
         silent = true,
         noremap = true,
-        desc = "Move buffer right"
+        desc = "move buffer right"
       })
 
       vim.keymap.set("n", "<C-q>", "<CMD>bd<CR>", {
         silent = true,
-        desc = "Close buffer"
+        desc = "close buffer"
       })
       vim.keymap.set("n", "<M-q>", "<CMD>BufferLineCloseOthers<CR>", {
         silent = true,
         noremap = true,
-        desc = "Close other buffers"
+        desc = "close other buffers"
       })
 
       vim.keymap.set("n", "<leader>bb", function()
         require("fzf-lua").buffers()
       end, {
-        desc = "Pick buffer"
+        desc = "pick [b]uffer"
       })
       vim.keymap.set("n", "<leader>bc", "<CMD>bd<CR>", {
         silent = true,
-        desc = "Close buffer"
+        desc = "[c]lose buffer"
       })
       vim.keymap.set("n", "<leader>bC", "<CMD>BufferLineCloseOthers<CR>", {
         silent = true,
         noremap = true,
-        desc = "Close other buffers"
+        desc = "[C]lose other buffers"
       })
       vim.keymap.set("n", "<leader>bp", "<CMD>BufferLineTogglePin<CR>", {
         silent = true,
         noremap = true,
-        desc = "Toggle pin"
+        desc = "toggle [p]in"
       })
       vim.keymap.set("n", "<leader>bx", "<CMD>BufferLineGroupClose ungrouped<CR>", {
         silent = true,
         noremap = true,
-        desc = "Close unpinned buffers"
+        desc = "close unpinned buffers ([x])"
       })
       vim.keymap.set("n", "<leader>bl", "<CMD>BufferLineMoveNext<CR>", {
         silent = true,
         noremap = true,
-        desc = "Move buffer right"
+        desc = "move buffer right ([l])"
       })
       vim.keymap.set("n", "<leader>bh", "<CMD>BufferLineMovePrev<CR>", {
         silent = true,
         noremap = true,
-        desc = "Move buffer left"
+        desc = "move buffer left ([h])"
       })
     end,
   },

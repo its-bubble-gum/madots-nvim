@@ -23,39 +23,39 @@ return {
     })
 
     vim.keymap.set("n", "<leader>ff", fzf.files, {
-      desc = "Find files"
+      desc = "find [f]iles"
     })
 
     vim.keymap.set("n", "<leader>fb", fzf.buffers, {
-      desc = "Find buffers"
+      desc = "find [b]uffers"
     })
 
     vim.keymap.set("n", "<leader>ft", fzf.tabs, {
-      desc = "Find tabs"
+      desc = "find [t]abs"
     })
 
     vim.keymap.set("n", "<leader>fr", fzf.oldfiles, {
-      desc = "Recent files"
+      desc = "[r]ecent files"
     })
 
     vim.keymap.set("n", "<leader>fh", fzf.help_tags, {
-      desc = "Help tags"
+      desc = "[h]elp tags"
     })
 
     vim.keymap.set("n", "<leader>fg", fzf.live_grep, {
-      desc = "Live grep"
+      desc = "live [g]rep"
     })
 
     vim.keymap.set("n", "<leader>fw", fzf.grep_cword, {
-      desc = "Search word under cursor"
+      desc = "search [w]ord under cursor"
     })
 
     vim.keymap.set("n", "<leader>fW", fzf.grep_cWORD, {
-      desc = "Search WORD under cursor"
+      desc = "search [W]ORD under cursor"
     })
 
     vim.keymap.set("n", "<leader>f/", fzf.grep_curbuf, {
-      desc = "Search current buffer"
+      desc = "search current buffer ([/])"
     })
   end
 }

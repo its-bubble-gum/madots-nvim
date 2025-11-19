@@ -4,25 +4,25 @@ function M.setup()
   vim.keymap.set("n", "<C-h>", "<CMD>wincmd h<CR>", {
     silent = true,
     noremap = true,
-    desc = "Move to left window"
+    desc = "move to left window"
   })
 
   vim.keymap.set("n", "<C-j>", "<CMD>wincmd j<CR>", {
     silent = true,
     noremap = true,
-    desc = "Move to bottom window"
+    desc = "move to bottom window"
   })
 
   vim.keymap.set("n", "<C-k>", "<CMD>wincmd k<CR>", {
     silent = true,
     noremap = true,
-    desc = "Move to top window"
+    desc = "move to top window"
   })
 
   vim.keymap.set("n", "<C-l>", "<CMD>wincmd l<CR>", {
     silent = true,
     noremap = true,
-    desc = "Move to right window"
+    desc = "move to right window"
   })
 end
 

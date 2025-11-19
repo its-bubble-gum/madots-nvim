@@ -112,18 +112,17 @@ return {
       })
     end
 
-    -- Keymaps for session management
     vim.keymap.set("n", "<leader>qs", "<CMD>AutoSession save<CR>", {
-      desc = "Save session",
+      desc = "[s]ave session",
     })
     vim.keymap.set("n", "<leader>qr", "<CMD>AutoSession search<CR>", {
-      desc = "Restore session",
+      desc = "[r]estore session",
     })
     vim.keymap.set("n", "<leader>qd", "<CMD>AutoSession delete<CR>", {
-      desc = "Delete session",
+      desc = "[d]elete session",
     })
     vim.keymap.set("n", "<leader>qf", fzf_session_picker, {
-      desc = "Search sessions (FzfLua)",
+      desc = "search sessions ([f]zf)",
     })
   end,
 }

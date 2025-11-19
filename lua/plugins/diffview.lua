@@ -35,29 +35,24 @@ return {
 			},
 		})
 
-		-- Key bindings for diffview under <leader>gd (git diff)
 		vim.keymap.set("n", "<leader>gdo", function()
 			vim.cmd("DiffviewOpen")
-		end, { desc = "Open diffview" })
+		end, { desc = "[o]pen diffview" })
 
 		vim.keymap.set("n", "<leader>gdc", function()
 			vim.cmd("DiffviewClose")
-		end, { desc = "Close diffview" })
+		end, { desc = "[c]lose diffview" })
 
 		vim.keymap.set("n", "<leader>gdh", function()
 			vim.cmd("DiffviewFileHistory")
-		end, { desc = "File history" })
+		end, { desc = "file [h]istory" })
 
 		vim.keymap.set("n", "<leader>gdf", function()
 			vim.cmd("DiffviewFileHistory %")
-		end, { desc = "Current file history" })
+		end, { desc = "current [f]ile history" })
 
 		vim.keymap.set("n", "<leader>gdr", function()
 			vim.cmd("DiffviewRefresh")
-		end, { desc = "Refresh diffview" })
-
-		vim.keymap.set("n", "<leader>gdt", function()
-			vim.cmd("DiffviewToggleFiles")
-		end, { desc = "Toggle files panel" })
+		end, { desc = "[r]efresh diffview" })
 	end,
 }

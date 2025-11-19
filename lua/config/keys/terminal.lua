@@ -55,7 +55,7 @@ function M.setup()
   vim.keymap.set({ "n", "t" }, "<C-\\><C-\\>", M.toggle_terminal, {
     silent = true,
     noremap = true,
-    desc = "Toggle terminal buffer"
+    desc = "toggle terminal buffer"
   })
 end
 

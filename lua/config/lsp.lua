@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Hover"
+        desc = "[h]over"
       })
 
       vim.keymap.del("n", "K", { buffer = args.buf })
@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Definition"
+        desc = "[d]efinition"
       })
     end
 
@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Declaration"
+        desc = "[D]eclaration"
       })
     end
 
@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "References"
+        desc = "[r]eferences"
       })
     end
 
@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Implementation"
+        desc = "[i]mplementation"
       })
     end
 
@@ -59,7 +59,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Type definition"
+        desc = "[t]ype definition"
       })
     end
 
@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Format"
+        desc = "[f]ormat"
       })
     end
 
@@ -79,7 +79,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Code action"
+        desc = "code [a]ction"
       })
     end
 
@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Rename"
+        desc = "re[n]ame"
       })
     end
 
@@ -99,18 +99,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
         noremap = true,
         silent = true,
         buffer = args.buf,
-        desc = "Toggle inlay hints"
+        desc = "toggle inlay [H]ints"
       })
     end
 
-    -- Diagnostic list keymaps
     vim.keymap.set("n", "<leader>lq", function()
       vim.diagnostic.setqflist()
     end, {
       noremap = true,
       silent = true,
       buffer = args.buf,
-      desc = "Diagnostics quickfix list"
+      desc = "diagnostics [q]uickfix list"
     })
 
     vim.keymap.set("n", "<leader>ll", function()
@@ -119,7 +118,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       noremap = true,
       silent = true,
       buffer = args.buf,
-      desc = "Diagnostics location list"
+      desc = "diagnostics [l]ocation list"
     })
   end,
 })

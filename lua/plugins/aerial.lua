@@ -12,6 +12,6 @@ return {
       show_guides = true,
     })
 
-    vim.keymap.set("n", "<leader>fa", "<cmd>AerialNavToggle<CR>", { desc = "Aerial symbols (fzf)" })
+    vim.keymap.set("n", "<leader>fa", "<cmd>AerialNavToggle<CR>", { desc = "[a]erial symbols" })
   end
 }
