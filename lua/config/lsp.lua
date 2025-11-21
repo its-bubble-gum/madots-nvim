@@ -1,7 +1,5 @@
--- Load LSP utilities
 local lsp_utils = require('config.lsp.utils')
 
--- LSP keymaps and buffer-local setup
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
@@ -123,19 +121,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Diagnostic configuration
 vim.diagnostic.config({
   virtual_text = true,
-  virtual_lines = false,  -- Disable to reduce overhead
+  virtual_lines = true,
   underline = true,
-  update_in_insert = false  -- Critical: only update diagnostics after leaving insert mode
+  update_in_insert = false
 })
 
--- Enable LSP servers
--- Server configs are in lsp/ directory
 vim.lsp.enable('ccls')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('angularls')
 vim.lsp.enable('eslint')
 vim.lsp.enable('vtsls')
 vim.lsp.enable('roslyn')
+vim.lsp.enable('markdown_oxide')
