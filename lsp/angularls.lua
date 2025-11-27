@@ -1,6 +1,5 @@
+local util = require('lspconfig.util')
+
 return {
-  root_dir = function(fname)
-    local util = require('lspconfig.util')
-    return util.root_pattern('angular.json')(fname)
-  end,
+  -- root_dir = util.root_pattern('angular.json')(fname)
 }
